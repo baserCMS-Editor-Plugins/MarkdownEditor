@@ -45,8 +45,12 @@ var MarkdownEditor = React.createClass({
 	render: function () {
 		return (
 			<div className="markdown-editor">
-				<InputArea text={this.state.inputAreaValue} onChange={this.handlerChange} onKeyDown={this.handlerKeyDown} />
-				<PreviewArea text={this.state.inputAreaValue} />
+				<div className="markdown-editor__input-area">
+					<InputArea text={this.state.inputAreaValue} onChange={this.handlerChange} onKeyDown={this.handlerKeyDown} />
+				</div>
+				<div className="markdown-editor__preview-area__output" >
+					<PreviewArea text={this.state.inputAreaValue} />
+				</div>
 			</div>
 		);
 	}
