@@ -42,11 +42,14 @@ var MarkdownEditor = React.createClass({
 			event.preventDefault();
 		}
 	},
+	handlerScroll: function(component, event) {
+		console.log(event);
+	},
 	render: function () {
 		return (
 			<div className="markdown-editor">
 				<div className="markdown-editor__input-area">
-					<InputArea text={this.state.inputAreaValue} onChange={this.handlerChange} onKeyDown={this.handlerKeyDown} />
+					<InputArea text={this.state.inputAreaValue} onChange={this.handlerChange} onKeyDown={this.handlerKeyDown} onScroll={this.handlerScroll} />
 				</div>
 				<div className="markdown-editor__preview-area" >
 					<PreviewArea text={this.state.inputAreaValue} />
