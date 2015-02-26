@@ -32455,88 +32455,108 @@ var compile = function(node, parentKey) {
 		case 'inlineCode':
 			return $('code', {
 				key: key,
-				className: 'inlineCode'
+				className: 'inlineCode',
+				'data-line': node.position.start.line
 			}, node.value);
 		case 'code':
 			return $(Highlight, {
-				className: node.lang
+				className: node.lang,
+				'data-line': node.position.start.line
 			}, node.value);
 		case 'break':
 			return $('br', {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			});
 		case 'horizontalRule':
 			return $('hr', {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			});
 		case 'image':
 			return $('img', {
 				key: key,
 				src: node.src,
 				title: node.title,
-				alt: node.alt
+				alt: node.alt,
+				'data-line': node.position.start.line
 			});
 		case 'root':
 			return $('div', {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			}, toChildren(node, key));
 		case 'strong':
 			return $('strong', {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			}, toChildren(node, key));
 		case 'emphasis':
 			return $('em', {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			}, toChildren(node, key));
 		case 'paragraph':
 			return $('p', {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			}, toChildren(node, key));
 		case 'link':
 			return $('a', {
 				key: key,
 				href: node.href,
-				title: node.title
+				title: node.title,
+				'data-line': node.position.start.line
 			}, toChildren(node, key));
 		case 'heading':
 			return $('h' + node.depth.toString(), {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			}, toChildren(node, key));
 		case 'list':
 			return $((node.ordered ? 'ol' : 'ul'), {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			}, toChildren(node, key));
 		case 'listItem':
 			return $('li', {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			}, toChildren(node, key));
 		case 'blockquote':
 			return $('blockquote', {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			}, toChildren(node, key));
 		case 'table':
 			return $('table', {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			}, toChildren(node, key));
 		case 'tableHeader':
 			return $('tr', {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			}, [
 				$('th', {
-					key: key + '_inner-th'
+					key: key + '_inner-th',
+					'data-line': node.position.start.line
 				}, toChildren(node, key))
 			]);
 		case 'tableRow':
 			return $('tr', {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			}, [
 				$('td', {
-					key: key + '_inner-td'
+					key: key + '_inner-td',
+					'data-line': node.position.start.line
 				}, toChildren(node, key))
 			]);
 		case 'tableCell':
 			return $('span', {
-				key: key
+				key: key,
+				'data-line': node.position.start.line
 			}, toChildren(node, key));
 		case 'html':
 			return $('div', {
@@ -32544,6 +32564,7 @@ var compile = function(node, parentKey) {
 			}, [
 				$('div', {
 					key: key + '_raw',
+					'data-line': node.position.start.line,
 					dangerouslySetInnerHTML: {
 						__html: node.value
 					}
