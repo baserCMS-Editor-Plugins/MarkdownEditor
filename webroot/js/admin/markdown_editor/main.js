@@ -32410,7 +32410,7 @@ var React = require('react');
 var InputArea = React.createClass({displayName: "InputArea",
 	render: function () {
 		return (
-			React.createElement("textarea", {defaultValue: this.props.text, onChange: this.props.onChange.bind(null, this), onKeyDown: this.props.onKeyDown.bind(null, this)})
+			React.createElement("textarea", {name: "data[Page][contents]", id: "PageContents", defaultValue: this.props.text, onChange: this.props.onChange.bind(null, this), onKeyDown: this.props.onKeyDown.bind(null, this), onScroll: this.props.onScroll.bind(null, this)})
 		);
 	}
 });
@@ -32634,11 +32634,14 @@ var MarkdownEditor = React.createClass({displayName: "MarkdownEditor",
 			event.preventDefault();
 		}
 	},
+	handlerScroll: function(component, event) {
+		console.log(event);
+	},
 	render: function () {
 		return (
 			React.createElement("div", {className: "markdown-editor"}, 
 				React.createElement("div", {className: "markdown-editor__input-area"}, 
-					React.createElement(InputArea, {text: this.state.inputAreaValue, onChange: this.handlerChange, onKeyDown: this.handlerKeyDown})
+					React.createElement(InputArea, {text: this.state.inputAreaValue, onChange: this.handlerChange, onKeyDown: this.handlerKeyDown, onScroll: this.handlerScroll})
 				), 
 				React.createElement("div", {className: "markdown-editor__preview-area"}, 
 					React.createElement(PreviewArea, {text: this.state.inputAreaValue})
