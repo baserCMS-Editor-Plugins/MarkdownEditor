@@ -1,0 +1,20 @@
+{
+  "name": "MarkdownEditorForBaserCMS",
+  "version": "0.1.0-alpha",
+  "homepage": "https://github.com/YusukeHirao/MarkdownEditor",
+  "authors": [
+    "Yusuke Hirao <yusukehirao@me.com>"
+  ],
+  "description": "Markdown Editor for baserCMS",
+  "main": "../webroot/css/mde.css",
+  "keywords": [
+    "markdown",
+    "basercms",
+    "cms",
+    "editor"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "highlightjs": "~8.4.0"
+  }
+}

@@ -1,0 +1,63 @@
+.-bc-plugin-markdown-editor {
+    $height: 500px;
+    $border-width: 1px;
+    $heading-height: 30px;
+    $code-font: Recty, 'Source Code Pro', Consolas, Monaco, 'Ubuntu Mono', 'Inconsolata-g', 'DejaVu Sans Mono', 'Anonymous Pro', Menlo, 'Lucida Console', 'Courier New', monospace;
+    &,
+    * {
+        box-sizing: border-box;
+    }
+    .markdown-editor {
+        display: flex;
+        height: $height;
+        text-align: left;
+        .markdown-editor__input-area {
+            flex-basis: 50%;
+            border: $border-width solid #999;
+            &:before {
+                content: "Markdown";
+                display: block;
+                background: #ccc;
+                line-height: $heading-height;
+                height: $heading-height;
+                padding: 0 10px;
+            }
+            textarea {
+                font-family: $code-font;
+                display: block;
+                width: 100%;
+                height: $height - ($border-width * 2) - $heading-height;
+                resize: none;
+                border: none;
+                padding: 10px;
+                margin: 0;
+            }
+        }
+        .markdown-editor__preview-area {
+            flex-basis: 50%;
+            border: $border-width solid #999;
+            border-left: none;
+            &:before {
+                content: "Preview";
+                display: block;
+                background: #ccc;
+                line-height: $heading-height;
+                height: $heading-height;
+                padding: 0 10px;
+            }
+            > div {
+                overflow: auto;
+                height: $height - ($border-width * 2) - $heading-height;
+                padding: 10px;
+            }
+
+            // Preview用CSS
+            pre {
+                padding: 0;
+                code {
+                    font-family: $code-font;
+                }
+            }
+        }
+    }
+}
