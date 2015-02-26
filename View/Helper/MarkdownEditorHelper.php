@@ -26,7 +26,12 @@ class MarkdownEditorHelper extends AppHelper {
 	protected function build($fieldName, $options = array()) {
 		// JavaScriptファイルの読み込み
 		$this->BcBaser->js(array(
-			'MarkdownEditor.admin/markdown_editor/main.js',
+			'MarkdownEditor.admin/markdown_editor/main.js'
+		), false);
+		// CSSファイルの読み込み
+		$this->BcBaser->css(array(
+			'MarkdownEditor.admin/markdown_editor/lib/highlightjs/styles/github.css',
+			'MarkdownEditor.admin/markdown_editor/style.css'
 		), false);
 	}
 
