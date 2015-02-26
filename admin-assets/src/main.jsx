@@ -14,16 +14,18 @@ $(function() {
 			render: function () {
 				return (
 					<div onChange={this.onChange} >
-						<MarkdownEditor />
+						<MarkdownEditor defaultValue={this.props.defaultValue} />
 					</div>
 				);
 			}
 		});
 
 		var $markdownEditor = $('.editor-area');
+		var $textarea = $markdownEditor.find('textarea');
+		var defaultValue = $textarea.val();
 		$markdownEditor.addClass('-bc-plugin-markdown-editor');
 
-		React.render(<Main />, $markdownEditor[0]);
+		React.render(<Main defaultValue={defaultValue} />, $markdownEditor[0]);
 
 	}
 

@@ -2,13 +2,13 @@
  * @jsx React.DOM
  */
 
-var marked = require('marked');
 var React = require('react');
+var Markdown = require('./Markdown.jsx');
 
 var PreviewArea = React.createClass({
 	render: function () {
 		return (
-			<div dangerouslySetInnerHTML={{__html: marked(this.props.text)}} />
+			<Markdown raw={this.props.text} />
 		);
 	}
 });

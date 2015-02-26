@@ -9,7 +9,7 @@ var PreviewArea = require('./PreviewArea.jsx');
 var MarkdownEditor = React.createClass({
 	getInitialState: function() {
 		return {
-			inputAreaValue: ""
+			inputAreaValue: this.props.defaultValue
 		};
 	},
 	handlerChange: function(component, event) {
@@ -48,7 +48,7 @@ var MarkdownEditor = React.createClass({
 				<div className="markdown-editor__input-area">
 					<InputArea text={this.state.inputAreaValue} onChange={this.handlerChange} onKeyDown={this.handlerKeyDown} />
 				</div>
-				<div className="markdown-editor__preview-area__output" >
+				<div className="markdown-editor__preview-area" >
 					<PreviewArea text={this.state.inputAreaValue} />
 				</div>
 			</div>
