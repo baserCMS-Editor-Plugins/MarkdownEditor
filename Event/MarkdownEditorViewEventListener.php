@@ -28,21 +28,20 @@ class MarkdownEditorViewEventListener extends BcViewEventListener {
  * @return boolean
  */
 	public function beforeLayout(CakeEvent $event) {
-
+		$View = $event->subject;
 		// 管理画面ではなにもしない
 		if(BcUtil::isAdminSystem()) {
 			// プレビューは適用
 			if (
-				($View->request['controller'] == 'pages' && $View->request['action'] == 'display')
+				($View->request->params['controller'] == 'pages' && $View->request->params['action'] == 'display')
 				||
-				($View->request['plugin'] == 'blog' && $View->request['action'] == 'archives')
+				($View->request->params['plugin'] == 'blog' && $View->request->params['action'] == 'archives')
 			) {
 			} else {
 				return true;
 			}
 		}
-
-		$View = $event->subject;
+		
 
 		App::import('vendor', 'MarkdownEditor.erusev/parsedown/Parsedown');
 
